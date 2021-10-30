@@ -33,27 +33,27 @@ public class BattleSequence {
             if (Input.equals("1")) {
                 player.damagingEnemy(enemy); // Method that allows the player to damage the enemy. //
 
-                if (enemy.enemyHealth >= player.playerAttackDamage) {
-                    System.out.println("The " + enemy.randomEnemy + " has " + enemy.enemyHealth + " health remaining.\n");
+                if (enemy.health >= player.attack) {
+                    System.out.println("The " + enemy.randomEnemy + " has " + enemy.health + " health remaining.\n");
                 }
             }
 
              else if (Input.equals("2")) {
                 // Condition that prevents the user from exceeding the maximum health value. //
-                if (player.playerHealthPotions > 0 && player.playerHealth < player.maxPlayerHealth && player.playerHealth + potion.potionHealAmount > player.maxPlayerHealth) {
+                if (player.healthPotions > 0 && player.health < player.maxHealth && player.health + potion.healAmount >= player.maxHealth) {
                         player.healToMaxHealth(player);
                     }
 
-                else if(player.playerHealth >= player.maxPlayerHealth) {
+                else if(player.health >= player.maxHealth) {
                     System.out.println("Your health is full. You cannot use any potions at this time.\n");
                 }
 
-                else if(player.playerHealth + potion.potionHealAmount <= player.maxPlayerHealth) {
+                else if(player.health + potion.healAmount <= player.maxHealth) {
                     player.playerHealing(potion);
                 }
 
-                else if(player.playerHealthPotions < 1){
-                    System.out.println("You have no more potions available, fight enemies for a chance to receive more.\n");
+                else if(player.healthPotions < 1){
+                    System.out.println("You have no more potions available, defeat enemies for a chance to receive more.\n");
                 }
 
             }
@@ -64,7 +64,7 @@ public class BattleSequence {
                 System.out.println("Invalid Input!\n" + "Please make sure to type in 1, 2, or 3.\n");
 
 
-            if (enemy.enemyHealth < 1) {
+            if (enemy.health < 1) {
                 enemy.enemyDefeated(); // Method that will spawn a new enemy with full health each time an enemy is defeated. //
 
             }
@@ -73,7 +73,7 @@ public class BattleSequence {
                     enemy.enemyRetaliation(player); // Method that allows the enemies that are alive to attack the player after each turn unless they run away. //
                 }
             }
-            if(player.playerHealth < 1) {
+            if(player.health < 1) {
                 player.gameOver(); // Method that will end the game if the player runs out of health. //
                 break;
             }
