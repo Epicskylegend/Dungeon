@@ -1,39 +1,35 @@
 public class Player {
 
-
-    int start; // condition to run the program. //
-
     // Variables for the player's stats. //
     int health = 100;
     int maxHealth = 100;
     int attack = 7;
     int level = 1;
-    int healthPotions = 3;
-    int damageTaken;
+    int numHealthPotions = 3;
 
 // Method that will hold the values of the player's stats, so they can be displayed after each turn. //
-public void playerStats() {
+public void stats() {
     System.out.println("---------------------------");
     System.out.println("Your current health is " + health + "/" + maxHealth + ".\n");
     System.out.println("Your current attack damage is " + attack + ".");
     System.out.println("Your current level is " + level + ".");
-    System.out.println("Your currently have " + healthPotions + " health potions.");
+    System.out.println("Your currently have " + numHealthPotions + " health potions.");
     System.out.println("---------------------------");
 }
 
 // Method that will allow you to damage the enemy. Includes enemy parameters, so our function can recognize variables from the "Enemy" class. //
-    public void damagingEnemy(Enemy enemy) {
+    public void damage(Enemy enemy) {
         System.out.println("---------------------------");
-        System.out.println("You strike the " + enemy.randomEnemy + " for " + attack + " damage.\n");
+        System.out.println("You strike the " + enemy.random + " for " + attack + " damage.\n");
         System.out.println("---------------------------");
         enemy.health -= attack;
     }
 
     // Method that allows the player to heal themselves. Include potion parameters, so our function can recognize variables from the "Potion" class. //
-    public void playerHealing(Potion potion) {
+    public void heal(Potion potion) {
         health += potion.healAmount;
-        healthPotions -= 1;
-        System.out.println("You drank a health potion healing you for " + potion.healAmount + " health. You now have " + healthPotions + " health potions remaining.\n");
+        numHealthPotions -= 1;
+        System.out.println("You drink a health potion healing you for " + potion.healAmount + " health. You now have " + numHealthPotions + " health potion(s) remaining.\n");
     }
 
     // Method that ends the game. //
@@ -46,8 +42,8 @@ public void playerStats() {
     }
     public void healToMaxHealth(Player player) {
         player.health = player.maxHealth;
-        healthPotions -= 1;
-        System.out.println("You drink a health potion healing you to " + maxHealth + " health.\n");
+        numHealthPotions -= 1;
+        System.out.println("You drink a health potion healing you to " + maxHealth + " health." + " You now have " + numHealthPotions + " health potion(s) remaining.\n");
     }
     public void levelUp(Player player) {
     maxHealth += 25;
