@@ -10,7 +10,7 @@ public class Enemy {
     int damage = 10;
     int[] enemyDamage = {25, 20, 15, 10};
 
-    // Variable for the random enemy that spawns out of the "enemyType" array. //
+    // Variable for the random enemy that spawns out of the "ype" array. //
     String random;
 
 
