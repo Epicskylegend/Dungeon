@@ -21,7 +21,7 @@ public class BattleSequence {
 // Code that will welcome the user and spawn a new enemy to get the game started before the loop. //
         System.out.println("Welcome to the dungeon!");
 
-        enemy.random = enemy.enemyType[rand.nextInt(enemy.enemyType.length)];
+        enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
         System.out.println("# A " + enemy.random + " appears! #");
 
 // This is our game loop that will control the entire battle sequence. //

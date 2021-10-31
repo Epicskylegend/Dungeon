@@ -3,7 +3,7 @@ import java.util.Random;
 public class Enemy {
     Random rand = new Random();
 
-    String[] enemyType = {"Zombie", "Skeleton", "Ghost", "Spider"}; // String array that stores the names of enemies. //
+    String[] type = {"Zombie", "Skeleton", "Ghost", "Spider"}; // String array that stores the names of enemies. //
 
     // Variables for enemy stats. //
     int health = 10;
@@ -17,14 +17,14 @@ public class Enemy {
 // Method that will spawn in a new random enemy. //
     public void randomizeEnemy() {
         System.out.println("You run away from the " + random + ".\n");
-        random = enemyType[rand.nextInt(enemyType.length)];
+        random = type[rand.nextInt(type.length)];
         System.out.println("# A " + random + " appears! #");
         health = 10;
     }
     // Method that will spawn in a new enemy if the current enemy has been defeated. //
     public void defeated() {
         System.out.println("The " + random + " has been defeated.\n");
-        random = enemyType[rand.nextInt(enemyType.length)];
+        random = type[rand.nextInt(type.length)];
         System.out.println("# A " + random + " appears! #");
         health = 10;
     }
