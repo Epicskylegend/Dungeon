@@ -19,6 +19,10 @@ public class BattleSequence {
         Random rand = new Random();
 
 // Code that will welcome the user and spawn a new enemy to get the game started before the loop. //
+
+        while(player.currentExp >= player.maxExp) {
+            player.levelUp(player);
+        }
         System.out.println("Welcome to the dungeon!");
 
         enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
@@ -69,11 +73,14 @@ public class BattleSequence {
             if (enemy.health < 1) {
                 enemy.defeated(); // Method that will spawn a new enemy with full health each time an enemy is defeated. //
                 enemy.potionDropChance(potion, player);
+                enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
                 player.getExp(enemy);
-                System.out.println("# A " + enemy.random + " appears! #\n");
-                enemy.health = 10;
 
-
+                while(player.currentExp >= player.maxExp) {
+                    player.levelUp(player);
+                }
+                System.out.println("# A level " + enemy.level + " " + enemy.random + " appears! #\n");
+                enemy.health = enemy.maxHealth;
 
             }
             else {
@@ -82,9 +89,13 @@ public class BattleSequence {
                 }
             }
             if(player.health < 1) {
-                player.gameOver(); // Method that will end the game if the player runs out of health. //
+                System.out.println("---------------------------");
+                System.out.println("You have run out of health and crawl out of the dungeon.\n");
+                System.out.println("GAME OVER.");
+                System.out.println("---------------------------");
                 return;
             }
+
 
             }
 

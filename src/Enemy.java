@@ -26,7 +26,7 @@ public class Enemy {
     // Method that will spawn in a new enemy if the current enemy has been defeated. //
     public void defeated() {
         System.out.println("The " + random + " has been defeated.\n");
-        random = type[rand.nextInt(type.length)];
+
 
     }
     // Method that allows the enemy to attack the player. //

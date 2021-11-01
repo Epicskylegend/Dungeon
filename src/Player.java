@@ -8,12 +8,15 @@ public class Player {
     int attack = 7;
     int level = 1;
     int numHealthPotions = 3;
-    int[] exp = {5, 6, 7, 9, 11, 13, 17, 23,25, 28};
-    int obtainedExp;
     int currentExp = 0;
     int maxExp = 100;
 
+    // Array and variables for the amount of exp the player will receive. //
+    int[] exp = {5, 6, 7, 9, 11, 13, 17, 23,25, 28};
+    int obtainedExp;
+
     Random rand = new Random();
+
 // Method that will hold the values of the player's stats, so they can be displayed after each turn. //
 public void stats() {
     System.out.println("---------------------------");
@@ -40,14 +43,6 @@ public void stats() {
         System.out.println("You drink a health potion healing you for " + potion.healAmount + " health. You now have " + numHealthPotions + " health potion(s) remaining.\n");
     }
 
-    // Method that ends the game. //
-    public void gameOver() {
-        System.out.println("---------------------------");
-        System.out.println("You have run out of health and crawl out of the dungeon.\n");
-        System.out.println("GAME OVER.");
-        System.out.println("---------------------------");
-
-    }
     public void healToMaxHealth(Player player) {
         player.health = player.maxHealth;
         numHealthPotions -= 1;
@@ -57,9 +52,11 @@ public void stats() {
     maxHealth += 25;
     attack += 5;
     level += 1;
+    maxExp += 100;
     System.out.println("## You have leveled up to " + level + "! ##\n");
     System.out.println("Your max health has been increased by 25.\n");
     System.out.println("Your attack has been increased by 5.\n");
+    System.out.println("---------------------------");
     }
     public void getExp(Enemy enemy) {
     obtainedExp = exp[rand.nextInt(exp.length)];
