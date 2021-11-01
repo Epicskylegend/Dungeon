@@ -22,7 +22,7 @@ public class BattleSequence {
         System.out.println("Welcome to the dungeon!");
 
         enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
-        System.out.println("# A " + enemy.random + " appears! #");
+        System.out.println("# A level " + enemy.level + " " + enemy.random + " appears! #");
 
 // This is our game loop that will control the entire battle sequence. //
         while (start == 0) {
@@ -67,8 +67,12 @@ public class BattleSequence {
 
 
             if (enemy.health < 1) {
-                enemy.potionDropChance(potion, player);
                 enemy.defeated(); // Method that will spawn a new enemy with full health each time an enemy is defeated. //
+                enemy.potionDropChance(potion, player);
+                player.getExp(enemy);
+                System.out.println("# A " + enemy.random + " appears! #\n");
+                enemy.health = 10;
+
 
 
             }

@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Player {
 
     // Variables for the player's stats. //
@@ -6,13 +8,19 @@ public class Player {
     int attack = 7;
     int level = 1;
     int numHealthPotions = 3;
+    int[] exp = {5, 6, 7, 9, 11, 13, 17, 23,25, 28};
+    int obtainedExp;
+    int currentExp = 0;
+    int maxExp = 100;
 
+    Random rand = new Random();
 // Method that will hold the values of the player's stats, so they can be displayed after each turn. //
 public void stats() {
     System.out.println("---------------------------");
     System.out.println("Your current health is " + health + "/" + maxHealth + ".\n");
     System.out.println("Your current attack damage is " + attack + ".");
     System.out.println("Your current level is " + level + ".");
+    System.out.println("You currently have " + currentExp + "/" + maxExp + " experience." );
     System.out.println("Your currently have " + numHealthPotions + " health potions.");
     System.out.println("---------------------------");
 }
@@ -53,4 +61,11 @@ public void stats() {
     System.out.println("Your max health has been increased by 25.\n");
     System.out.println("Your attack has been increased by 5.\n");
     }
+    public void getExp(Enemy enemy) {
+    obtainedExp = exp[rand.nextInt(exp.length)];
+    currentExp += obtainedExp;
+    System.out.println("You received " + obtainedExp + " experience.\n");
+
+    }
+
    }
