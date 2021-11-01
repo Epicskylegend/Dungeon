@@ -67,7 +67,9 @@ public class BattleSequence {
 
 
             if (enemy.health < 1) {
+                enemy.potionDropChance(potion, player);
                 enemy.defeated(); // Method that will spawn a new enemy with full health each time an enemy is defeated. //
+
 
             }
             else {

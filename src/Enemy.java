@@ -25,7 +25,7 @@ public class Enemy {
     public void defeated() {
         System.out.println("The " + random + " has been defeated.\n");
         random = type[rand.nextInt(type.length)];
-        System.out.println("# A " + random + " appears! #");
+        System.out.println("# A " + random + " appears! #\n");
         health = 10;
     }
     // Method that allows the enemy to attack the player. //
@@ -35,6 +35,14 @@ public class Enemy {
         player.health -= damage;
         System.out.println("The " + random + " has " + health + " health remaining.\n");
         System.out.println("---------------------------");
+    }
+    public void potionDropChance(Potion potion, Player player) {
+        potion.dropChance = rand.nextInt(5) == 0;
+        if(potion.dropChance == true ) {
+            player.numHealthPotions += 1;
+            System.out.println("The " + random + " dropped a health potion! You now have " + player.numHealthPotions + " health potions.\n");
+        }
+
     }
 
 }
