@@ -21,12 +21,12 @@ public class BattleSequence {
 // Code that will welcome the user and spawn a new enemy to get the game started before the loop. //
 
         while(player.currentExp >= player.maxExp) {
-            player.levelUp(player);
+            player.levelUp();
         }
         System.out.println("Welcome to the dungeon!");
 
         enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
-        System.out.println("# A level " + enemy.level + " " + enemy.random + " appears! #");
+        System.out.println("# A level " + enemy.level + " " + enemy.random + " with " + enemy.health + "/" + enemy.maxHealth + " health appears!\n");
 
 // This is our game loop that will control the entire battle sequence. //
         while (start == 0) {
@@ -39,11 +39,12 @@ public class BattleSequence {
             if (Input.equals("1")) {
                 player.damage(enemy); // Method that allows the player to damage the enemy. //
 
-                if (enemy.health >= player.attack) {
-                    System.out.println("The " + enemy.random + " has " + enemy.health + " health remaining.\n");
+                if (enemy.health >= player.attack && player.level < 2) {
+                    System.out.println("The " + enemy.random + " has " + enemy.health + "/" + enemy.maxHealth + " health remaining.\n");
                 }
             }
 
+    
              else if (Input.equals("2")) {
                 // Condition that prevents the user from exceeding the maximum health value. //
                 if (player.numHealthPotions > 0 && player.health < player.maxHealth && player.health + potion.healAmount >= player.maxHealth) {
@@ -64,6 +65,8 @@ public class BattleSequence {
 
             }
             else if (Input.equals("3")) {
+                System.out.println("---------------------------");
+                System.out.println("You run away from the " + enemy.random + ".\n");
                 enemy.randomizeEnemy(); // Method that will allow the player to run away from the current enemy and encounter a new one. //
             }
             else
@@ -71,21 +74,26 @@ public class BattleSequence {
 
 
             if (enemy.health < 1) {
-                enemy.defeated(); // Method that will spawn a new enemy with full health each time an enemy is defeated. //
+                player.defeatedEnemies += 1;
+                System.out.println("The " + enemy.random + " has been defeated.\n");
                 enemy.potionDropChance(potion, player);
                 enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
-                player.getExp(enemy);
+                player.getExp();
 
-                while(player.currentExp >= player.maxExp) {
-                    player.levelUp(player);
+                while(player.currentExp >= player.maxExp) { // When the player reaches the max exp, they will level up increasing their stats. //
+                    player.levelUp();
+                    enemy.levelUp();
+                    System.out.println("You feel uneasy as the enemies around you seem to get stronger...\n");
                 }
-                System.out.println("# A level " + enemy.level + " " + enemy.random + " appears! #\n");
                 enemy.health = enemy.maxHealth;
+                System.out.println("# A level " + enemy.level + " " + enemy.random + " with " + enemy.health + "/" + enemy.maxHealth + " health appears!\n");
+
 
             }
             else {
                 if (Input.equals("1") || Input.equals("2")) {
                     enemy.retaliation(player); // Method that allows the enemies that are alive to attack the player after each turn unless they run away. //
+                    
                 }
             }
             if(player.health < 1) {
