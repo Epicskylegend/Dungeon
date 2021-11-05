@@ -22,8 +22,6 @@ public class Enemy {
         health = maxHealth;
         System.out.println("# A level " + level + " " + random + " with " + health + "/" + maxHealth + " health appears!\n");
         System.out.println("---------------------------");
-
-
     }
 
 
@@ -37,8 +35,8 @@ public class Enemy {
     }
 
     public void potionDropChance(Potion potion, Player player) {
-        potion.dropChance = rand.nextInt(5) == 0; // Method that gives enemies a 20% chance to drop health potions when they are defeated. //
-        if(potion.dropChance == true ) {
+        potion.drop = rand.nextInt(4) == 0; // Method that gives enemies a 25% chance to drop health potions when they are defeated. //
+        if(potion.drop == true && player.numHealthPotions < player.maxNumHealthPotions) {
             player.numHealthPotions += 1;
             System.out.println("The " + random + " dropped a health potion! You now have " + player.numHealthPotions + " health potions.\n");
         }

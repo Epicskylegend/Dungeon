@@ -19,7 +19,7 @@ public class BattleSequence {
 // Code that will welcome the user and spawn a new enemy to get the game started before the loop. //
 
         while(player.currentExp >= player.maxExp) {
-            player.levelUp();
+            player.levelUp(potion);
         }
         System.out.println("Welcome to the dungeon!");
 
@@ -79,7 +79,7 @@ public class BattleSequence {
                 player.getExp();
 
                 while(player.currentExp >= player.maxExp) { // When the player reaches the max exp, they will level up increasing their stats. //
-                    player.levelUp();
+                    player.levelUp(potion);
                     enemy.levelUp();
                     System.out.println("You feel uneasy as the enemies around you seem to get stronger...\n");
                 }

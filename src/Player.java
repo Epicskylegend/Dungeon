@@ -8,12 +8,13 @@ public class Player {
     int attack = 7;
     int level = 1;
     int numHealthPotions = 3;
+    int maxNumHealthPotions = 3;
     int currentExp = 0;
     int maxExp = 100;
     int defeatedEnemies = 0; // Keeps track of how many enemies the player has defeated. //
 
     // Array and variables for the amount of exp the player will receive. //
-    int[] exp = {5, 6, 7, 9, 11, 13, 17, 23,25, 28};
+    int[] exp = {5, 6, 7, 100, 11, 13, 17, 23,25, 28};
     int obtainedExp;
 
     Random rand = new Random();
@@ -49,16 +50,19 @@ public void stats() {
         numHealthPotions -= 1;
         System.out.println("You drink a health potion healing you to " + maxHealth + " health." + " You now have " + numHealthPotions + " health potion(s) remaining.\n");
     }
-    public void levelUp() {
+    public void levelUp(Potion potion) {
     maxHealth += 25;
+    maxNumHealthPotions +=1;
     attack += 5;
     level += 1;
     maxExp += 100;
+    potion.healAmount = maxHealth/2;
 
     System.out.println("---------------------------");
     System.out.println("## You have leveled up to " + level + "! ##\n");
     System.out.println("Your max health has been increased by 25.\n");
     System.out.println("Your attack has been increased by 5.");
+    System.out.println("The max number of health potions you can hold increased to " + maxNumHealthPotions + ".");
     System.out.println("---------------------------");
     }
 
