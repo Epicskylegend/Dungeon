@@ -5,8 +5,6 @@ public class BattleSequence {
 
     public static void main(String args[]) {
 
-        int start = 0; // condition to run the program. //
-
 // Allows for user input. //
         Scanner input = new Scanner(System.in);
 
@@ -29,7 +27,7 @@ public class BattleSequence {
         System.out.println("# A level " + enemy.level + " " + enemy.random + " with " + enemy.health + "/" + enemy.maxHealth + " health appears!\n");
 
 // This is our game loop that will control the entire battle sequence. //
-        while (start == 0) {
+        while (player.health > 0) {
             player.stats();
 
             System.out.println("What would you like to do?\n");
