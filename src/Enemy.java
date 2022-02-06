@@ -1,14 +1,13 @@
 import java.util.Random;
 
-public class Enemy {
+public class Enemy  {
     Random rand = new Random();
 
     String[] type = {"Zombie", "Skeleton", "Ghost", "Spider"}; // String array that stores the names of enemies. //
-    String[] boss = {"Corrupt Zombie"};
 
     // Variables for enemy stats. //
-    int health = 10;
-    int maxHealth = 10;
+    public int health = 10;
+    public int maxHealth = 10;
     int damage = 10;
     int level = 1;
 
@@ -49,8 +48,5 @@ public class Enemy {
         level += 1;
     }
 
-    public void boss() {
-
-    }
 
 }

@@ -4,7 +4,6 @@ import java.util.Random;
 public class BattleSequence {
 
     public static void main(String args[]) {
-
 // Allows for user input. //
         Scanner input = new Scanner(System.in);
 
@@ -12,6 +11,8 @@ public class BattleSequence {
         Player player = new Player();
         Enemy enemy = new Enemy();
         Potion potion = new Potion();
+        Boss awakenedDemon = new Boss(400, 400, 30, 1);
+
 
 // Allows us to use the randomizer. //
         Random rand = new Random();
@@ -25,8 +26,10 @@ public class BattleSequence {
 
         enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
         System.out.println("# A level " + enemy.level + " " + enemy.random + " with " + enemy.health + "/" + enemy.maxHealth + " health appears!\n");
+        System.out.println(awakenedDemon.toInt());
 
-// This is our game loop that will control the entire battle sequence. //
+
+// This is our game loop that will control the entire battle sequence. //   
         while (player.health > 0) {
             player.stats();
 
@@ -36,6 +39,7 @@ public class BattleSequence {
             String Input = input.nextLine();
             if (Input.equals("1")) {
                 player.damage(enemy); // Method that allows the player to damage the enemy. //
+
 
                 if (enemy.health >= player.attack && player.level < 2) {
                     System.out.println("The " + enemy.random + " has " + enemy.health + "/" + enemy.maxHealth + " health remaining.\n");
@@ -53,7 +57,7 @@ public class BattleSequence {
                     System.out.println("Your health is full. You cannot use any potions at this time.\n");
                 }
 
-                else if(player.health + potion.healAmount <= player.maxHealth) {
+                else if(player.numHealthPotions > 0 && player.health + potion.healAmount <= player.maxHealth) {
                     player.heal(potion);
                 }
 
