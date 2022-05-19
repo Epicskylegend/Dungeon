@@ -34,7 +34,7 @@ public class BattleSequence {
             player.stats();
 
             System.out.println("What would you like to do?\n");
-            System.out.println("Type 1 to attack, 2 to use health potion, and 3 to run\n");
+            System.out.println("Type 1 to attack, 2 to use a health potion, 3 to block, and 4 to run.\n");
 
             String Input = input.nextLine();
             if (Input.equals("1")) {
