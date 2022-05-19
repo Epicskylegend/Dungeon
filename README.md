@@ -11,4 +11,10 @@ Make sure you're using Java 17 otherwise the program will not run!
 To run the program enter:  <i>java -jar Dungeon.jar</i> into your command prompt.
 
 ## Controls
+<b>Press 1</b> to attack.
 
+<b>Press 2</b> to use a health potion.
+
+<b>Press 3</b> to block.
+
+<b>Press 4</b> to run away from the enemy.
