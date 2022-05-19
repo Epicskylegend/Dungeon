@@ -6,4 +6,4 @@ public class Potion {
     boolean drop; // Percentage chance for a potion to be dropped after defeating an enemy. //
 
 }
-
+//  player.shieldHealth - enemy.damage = enemy.overkillDamage;

@@ -10,6 +10,7 @@ public class Enemy  {
     public int maxHealth = 10;
     int damage = 10;
     int level = 1;
+    int overkillDamage;
 
     // Variable for the random enemy that spawns out of the "ype" array. //
     String random;
@@ -32,6 +33,12 @@ public class Enemy  {
         System.out.println("The " + random + " has " + health + "/" + maxHealth + " health remaining.\n");
         System.out.println("---------------------------");
     }
+    public void attackingShield(Player player) {
+        System.out.println("---------------------------");
+        System.out.println("The " + random + " strikes your shield for " + damage + " damage.\n");
+
+    }
+
 
     public void potionDropChance(Potion potion, Player player) {
         potion.drop = rand.nextInt(4) == 0; // Method that gives enemies a 25% chance to drop health potions when they are defeated. //

@@ -11,7 +11,7 @@ public class BattleSequence {
         Player player = new Player();
         Enemy enemy = new Enemy();
         Potion potion = new Potion();
-        Boss awakenedDemon = new Boss(400, 400, 30, 1);
+
 
 
 // Allows us to use the randomizer. //
@@ -26,7 +26,7 @@ public class BattleSequence {
 
         enemy.random = enemy.type[rand.nextInt(enemy.type.length)];
         System.out.println("# A level " + enemy.level + " " + enemy.random + " with " + enemy.health + "/" + enemy.maxHealth + " health appears!\n");
-        System.out.println(awakenedDemon.toInt());
+
 
 
 // This is our game loop that will control the entire battle sequence. //   
@@ -50,29 +50,27 @@ public class BattleSequence {
              else if (Input.equals("2")) {
                 // Condition that prevents the user from exceeding the maximum health value. //
                 if (player.numHealthPotions > 0 && player.health < player.maxHealth && player.health + potion.healAmount >= player.maxHealth) {
-                        player.healToMaxHealth(player);
-                    }
-
-                else if(player.health >= player.maxHealth) {
+                    player.healToMaxHealth(player);
+                } else if (player.health >= player.maxHealth) {
                     System.out.println("Your health is full. You cannot use any potions at this time.\n");
-                }
-
-                else if(player.numHealthPotions > 0 && player.health + potion.healAmount <= player.maxHealth) {
+                } else if (player.numHealthPotions > 0 && player.health + potion.healAmount <= player.maxHealth) {
                     player.heal(potion);
-                }
-
-                else if(player.numHealthPotions < 1){
+                } else if (player.numHealthPotions < 1) {
                     System.out.println("You have no more potions available, defeat enemies for a chance to receive more.\n");
                 }
+            }
+             else if (Input.equals("3")) {
+                    System.out.println("---------------------------");
+                }
+             else if (Input.equals("4")) {
+                    System.out.println("---------------------------");
+                    System.out.println("You run away from the " + enemy.random + ".\n");
+                    enemy.randomizeEnemy(); // Method that will allow the player to run away from the current enemy and encounter a new one. //
+            }
 
-            }
-            else if (Input.equals("3")) {
-                System.out.println("---------------------------");
-                System.out.println("You run away from the " + enemy.random + ".\n");
-                enemy.randomizeEnemy(); // Method that will allow the player to run away from the current enemy and encounter a new one. //
-            }
+
             else
-                System.out.println("Invalid Input!\n" + "Please make sure to type in 1, 2, or 3.\n");
+                System.out.println("Invalid Input!\n" + "Please make sure to type in 1, 2, or 3, or 4.\n");
 
 
             if (enemy.health < 1) {
@@ -93,9 +91,20 @@ public class BattleSequence {
 
             }
             else {
-                if (Input.equals("1") || Input.equals("2")) {
+                if (Input.equals("1") || Input.equals("2") || Input.equals("3")) {
                     enemy.retaliation(player); // Method that allows the enemies that are alive to attack the player after each turn unless they run away. //
-                    
+                }
+                if (Input.equals("3") && player.shieldHealth > 0)    {
+                    enemy.attackingShield(player);
+                    player.shieldHealth -= enemy.damage;
+                    if (player.shieldHealth - enemy.damage <0) {
+
+
+                        player.shieldHealth = 0;
+                    }
+                }
+
+
                 }
             }
             if(player.health < 1) {
@@ -113,7 +122,7 @@ public class BattleSequence {
         }
 
 
-    }
+
 
 
 
