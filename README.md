@@ -1,7 +1,7 @@
 # Dunegon RPG
 This is a text based dungeon RPG where you're faced with random enemies that you defeat to obtain experience and level up! 
 
-<
+<image src="Dungeon RPG.jpg"/>
 
 ## Install and Run
 
