@@ -15,6 +15,6 @@ To run the program enter:  <i>java -jar Dungeon.jar</i> into your command prompt
 
 <b>Press 2</b> to use a health potion.
 
-<b>Press 3</b> to block.
+<b>Press 3</b> to block <i>(work in progress).</i>
 
 <b>Press 4</b> to run away from the enemy.
