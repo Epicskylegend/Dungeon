@@ -3,17 +3,13 @@ import java.util.Random;
 public class Player {
 
     // Variables for the player's stats. //
-    int health = 100;
-    int maxHealth = 100;
+    int health = 100, maxHealth = 100;
     int attack = 7;
     int level = 1;
-    int numHealthPotions = 3;
-    int maxNumHealthPotions = 3;
-    int currentExp = 0;
-    int maxExp = 100;
+    int numHealthPotions = 3, maxNumHealthPotions = 3;
+    int currentExp = 0, maxExp = 100;
     int defeatedEnemies = 0; // Keeps track of how many enemies the player has defeated. //
-    double shieldHealth = 25;
-    int shieldMaxHealth = 25;
+    double shieldHealth = 25, shieldMaxHealth = 25;
     boolean shieldActive;
 
     // Array and variables for the amount of exp the player will receive. //
@@ -75,9 +71,6 @@ public class Player {
         System.out.println("---------------------------");
     }
 
-    public void blockAttack(Player player, Enemy enemy){
-
-    }
 
     public void getExp() {
         obtainedExp = rand.nextInt(50)+25;

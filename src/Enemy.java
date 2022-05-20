@@ -30,7 +30,7 @@ public class Enemy  {
     public void retaliation(Player player) {
 
 
-        if (player.shieldHealth < damage && player.shieldActive == true) {
+        if (player.shieldHealth < damage && player.shieldActive) {
             overkillDamage = damage - player.shieldHealth;
             player.shieldHealth = 0;
             player.health -= overkillDamage;
@@ -40,7 +40,7 @@ public class Enemy  {
             System.out.println("---------------------------");
         }
         else
-            if(player.shieldHealth >= damage && player.shieldActive == true) {
+            if(player.shieldHealth >= damage && player.shieldActive) {
                 player.shieldHealth -= damage;
                 System.out.println("---------------------------");
                 System.out.println("The " + random + " strikes your shield for " + damage + " damage.\n");
@@ -54,7 +54,7 @@ public class Enemy  {
 
     public void potionDropChance(Potion potion, Player player) {
         potion.drop = rand.nextInt(4) == 0; // Method that gives enemies a 25% chance to drop health potions when they are defeated. //
-        if(potion.drop == true && player.numHealthPotions < player.maxNumHealthPotions) {
+        if(potion.drop  && player.numHealthPotions < player.maxNumHealthPotions) {
             player.numHealthPotions += 1;
             System.out.println("The " + random + " dropped a health potion! You now have " + player.numHealthPotions + " health potions.\n");
         }
