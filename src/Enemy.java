@@ -51,7 +51,6 @@ public class Enemy  {
     }
 
 
-
     public void potionDropChance(Potion potion, Player player) {
         potion.drop = rand.nextInt(4) == 0; // Method that gives enemies a 25% chance to drop health potions when they are defeated. //
         if(potion.drop  && player.numHealthPotions < player.maxNumHealthPotions) {
