@@ -38,6 +38,7 @@ public class BattleSequence {
 
             String Input = input.nextLine();
             if (Input.equals("1")) {
+                player.shieldActive = false;
                 player.damage(enemy); // Method that allows the player to damage the enemy. //
 
 
@@ -48,6 +49,8 @@ public class BattleSequence {
 
     
              else if (Input.equals("2")) {
+                player.shieldActive = false;
+
                 // Condition that prevents the user from exceeding the maximum health value. //
                 if (player.numHealthPotions > 0 && player.health < player.maxHealth && player.health + potion.healAmount >= player.maxHealth) {
                     player.healToMaxHealth(player);
@@ -59,10 +62,19 @@ public class BattleSequence {
                     System.out.println("You have no more potions available, defeat enemies for a chance to receive more.\n");
                 }
             }
-             else if (Input.equals("3")) {
+             else if (Input.equals("3") && player.shieldHealth > 0) {
+                    player.shieldActive = true;
+                    System.out.println("---------------------------");
+                    System.out.println("You use your shield to block the attack");
                     System.out.println("---------------------------");
                 }
+             else if (Input.equals("3") && player.shieldHealth == 0) {
+                System.out.println("---------------------------");
+                System.out.println("Your shield is depleted. You need to wait for it to recharge before you can use it again.");
+
+            }
              else if (Input.equals("4")) {
+                player.shieldActive = false;
                     System.out.println("---------------------------");
                     System.out.println("You run away from the " + enemy.random + ".\n");
                     enemy.randomizeEnemy(); // Method that will allow the player to run away from the current enemy and encounter a new one. //
@@ -90,22 +102,21 @@ public class BattleSequence {
 
 
             }
-            else {
+            else
                 if (Input.equals("1") || Input.equals("2") || Input.equals("3")) {
                     enemy.retaliation(player); // Method that allows the enemies that are alive to attack the player after each turn unless they run away. //
-                }
-                if (Input.equals("3") && player.shieldHealth > 0)    {
-                    enemy.attackingShield(player);
-                    player.shieldHealth -= enemy.damage;
-                    if (player.shieldHealth - enemy.damage <0) {
-
-
-                        player.shieldHealth = 0;
+                    if(player.shieldActive == false) {
+                        System.out.println("---------------------------");
+                        System.out.println("The " + enemy.random + " strikes you for " + enemy.damage + " damage.\n");
+                        player.health -= enemy.damage;
+                        System.out.println("The " + enemy.random + " has " + enemy.health + "/" + enemy.maxHealth + " health remaining.\n");
+                        System.out.println("---------------------------");
                     }
+
                 }
 
 
-                }
+
             }
             if(player.health < 1) {
                 System.out.println("---------------------------");

@@ -14,6 +14,7 @@ public class Player {
     int defeatedEnemies = 0; // Keeps track of how many enemies the player has defeated. //
     double shieldHealth = 25;
     int shieldMaxHealth = 25;
+    boolean shieldActive;
 
     // Array and variables for the amount of exp the player will receive. //
     Random rand = new Random();

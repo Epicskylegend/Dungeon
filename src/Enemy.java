@@ -10,7 +10,8 @@ public class Enemy  {
     public int maxHealth = 10;
     int damage = 10;
     int level = 1;
-    int overkillDamage;
+    double overkillDamage;
+
 
     // Variable for the random enemy that spawns out of the "ype" array. //
     String random;
@@ -27,17 +28,28 @@ public class Enemy  {
 
     // Method that allows the enemy to attack the player. //
     public void retaliation(Player player) {
-        System.out.println("---------------------------");
-        System.out.println("The " + random + " strikes you for " + damage + " damage.\n");
-        player.health -= damage;
-        System.out.println("The " + random + " has " + health + "/" + maxHealth + " health remaining.\n");
-        System.out.println("---------------------------");
-    }
-    public void attackingShield(Player player) {
-        System.out.println("---------------------------");
-        System.out.println("The " + random + " strikes your shield for " + damage + " damage.\n");
+
+
+        if (player.shieldHealth < damage && player.shieldActive == true) {
+            overkillDamage = damage - player.shieldHealth;
+            player.shieldHealth = 0;
+            player.health -= overkillDamage;
+            System.out.println("---------------------------");
+            System.out.println("The " + random + " breaks through your shield and hits you for " + overkillDamage + " damage.\n");
+            System.out.println("The " + random + " has " + health + "/" + maxHealth + " health remaining.\n");
+            System.out.println("---------------------------");
+        }
+        else
+            if(player.shieldHealth >= damage && player.shieldActive == true) {
+                player.shieldHealth -= damage;
+                System.out.println("---------------------------");
+                System.out.println("The " + random + " strikes your shield for " + damage + " damage.\n");
+                System.out.println("The " + random + " has " + health + "/" + maxHealth + " health remaining.\n");
+                System.out.println("---------------------------");
+            }
 
     }
+
 
 
     public void potionDropChance(Potion potion, Player player) {
