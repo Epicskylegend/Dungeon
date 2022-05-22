@@ -109,7 +109,7 @@ public class BattleSequence {
                         System.out.println("---------------------------");
                         System.out.println("The " + enemy.random + " strikes you for " + enemy.damage + " damage.\n");
                         player.health -= enemy.damage;
-                        System.out.println("The " + enemy.random + " has " + enemy.health + "/" + enemy.maxHealth + " health remaining.\n");
+                        System.out.println("The " + enemy.random  + " has " + enemy.health + "/" + enemy.maxHealth + " health remaining.\n");
                         System.out.println("---------------------------");
                     }
 
