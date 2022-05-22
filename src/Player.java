@@ -9,12 +9,11 @@ public class Player {
     int numHealthPotions = 3, maxNumHealthPotions = 3;
     int currentExp = 0, maxExp = 100;
     int defeatedEnemies = 0; // Keeps track of how many enemies the player has defeated. //
-    double shieldHealth = 25, shieldMaxHealth = 25;
+    double shieldCapacity = 25, shieldMaxCapacity = 25;
     boolean shieldActive;
 
-    // Array and variables for the amount of exp the player will receive. //
+    // Variables for the amount of exp the player will receive. //
     Random rand = new Random();
-    int randomExp = rand.nextInt(50);
     int obtainedExp;
 
 
@@ -22,11 +21,11 @@ public class Player {
     public void stats() {
         System.out.println("---------------------------");
         System.out.println("Your current health is " + health + "/" + maxHealth + ".\n");
-        System.out.println("Your current shield capacity is " + shieldHealth + "/" + shieldMaxHealth + ".\n");
+        System.out.println("Your current shield capacity is " + shieldCapacity + "/" + shieldMaxCapacity + ".\n");
         System.out.println("Your current attack damage is " + attack + ".");
         System.out.println("Your current level is " + level + ".");
         System.out.println("You currently have " + currentExp + "/" + maxExp + " experience.");
-        System.out.println("Your currently have " + numHealthPotions + " health potions.");
+        System.out.println("Your currently have " + numHealthPotions + " out of " + maxNumHealthPotions + " health potions available.");
         System.out.println("---------------------------");
     }
 
@@ -59,13 +58,13 @@ public class Player {
         attack += 5;
         level += 1;
         maxExp += 100;
-        shieldMaxHealth *= 1.1;
+        shieldMaxCapacity *= 1.2;
         potion.healAmount = maxHealth / 2;
 
         System.out.println("---------------------------");
         System.out.println("## You have leveled up to " + level + "! ##\n");
         System.out.println("Your max health has been increased by 25.\n");
-        System.out.println("Your max shield capacity has been increased to " + shieldMaxHealth + ".\n");
+        System.out.println("Your max shield capacity has been increased to " + shieldMaxCapacity + ".\n");
         System.out.println("Your attack has been increased by 5.");
         System.out.println("The max number of health potions you can hold increased to " + maxNumHealthPotions + ".");
         System.out.println("---------------------------");
@@ -74,7 +73,7 @@ public class Player {
 
     public void getExp() {
         obtainedExp = rand.nextInt(50)+25;
-        currentExp = currentExp += obtainedExp;
+        currentExp += obtainedExp;
         System.out.println("You received " + obtainedExp + " experience.\n");
     }
 }
