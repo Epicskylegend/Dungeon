@@ -4,5 +4,7 @@ public class Potion {
 
     boolean drop; // Percentage chance for a potion to be dropped after defeating an enemy. //
 
+    String shieldPotion, strengthPotion;
+
 }
 

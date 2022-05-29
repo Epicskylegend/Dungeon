@@ -1,6 +1,8 @@
 import java.util.Random;
 
 public class Enemy  {
+
+    Inventory inventory = new Inventory();
     Random rand = new Random();
 
     String[] type = {"Zombie", "Skeleton", "Ghost", "Spider"}; // String array that stores the names of enemies. //
@@ -50,10 +52,10 @@ public class Enemy  {
 
 
     public void potionDropChance(Potion potion, Player player) {
-        potion.drop = rand.nextInt(4) == 0; // Method that gives enemies a 25% chance  to drop health potions when they are defeated. //
-        if(potion.drop  && player.numHealthPotions < player.maxNumHealthPotions) {
-            player.numHealthPotions += 1;
-            System.out.println("The " + random + " dropped a health potion! You now have " + player.numHealthPotions + " health potions.\n");
+        potion.drop = rand.nextInt(3) == 0; // Method that gives enemies a 25% chance  to drop health potions when they are defeated. //
+        if(potion.drop && inventory.numHealthPotions < inventory.maxNumHealthPotions) {
+            inventory.numHealthPotions += 1;
+            System.out.println("The " + random + " dropped a health potion! You now have " + inventory.numHealthPotions + " health potions.\n");
         }
     }
 
