@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Inventory {
+/* public class Inventory {
 
     Potion potion = new Potion();
 
@@ -31,3 +31,4 @@ public class Inventory {
 
 
 }
+*/

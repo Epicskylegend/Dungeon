@@ -11,7 +11,7 @@ public class BattleSequence {
         Player player = new Player();
         Enemy enemy = new Enemy();
         Potion potion = new Potion();
-        Inventory inventory = new Inventory();
+
 
 
 
@@ -49,20 +49,17 @@ public class BattleSequence {
 
             else if (Input.equals("2")) {
                 player.shieldActive = false;
-
-
-
                 // Condition that prevents the user from exceeding the maximum health value. //
-                if  (inventory.numHealthPotions > 0 && player.health < player.maxHealth && player.health + potion.healAmount >= player.maxHealth) {
+                if  (player.numHealthPotions > 0 && player.health < player.maxHealth && player.health + potion.healAmount >= player.maxHealth) {
                     player.healToMaxHealth(player);
                 }
                 else if (player.health == player.maxHealth) {
                     System.out.println("Your health is full. You cannot use any potions at this time.\n");
                 }
-                else if (inventory.numHealthPotions > 0 && player.health + potion.healAmount <= player.maxHealth) {
+                else if (player.numHealthPotions > 0 && player.health + potion.healAmount <= player.maxHealth) {
                     player.heal(potion);
                 }
-                else if (inventory.numHealthPotions < 1) {
+                else if (player.numHealthPotions < 1) {
                     System.out.println("You have no more potions available, defeat enemies for a chance to receive more.\n");
                 }
             }
