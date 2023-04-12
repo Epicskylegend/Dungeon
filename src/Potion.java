@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Potion {
 
     int healAmount = 50; // Amount that the potion heals the player for to start the game. //
@@ -7,4 +9,3 @@ public class Potion {
     String shieldPotion, strengthPotion;
 
 }
-

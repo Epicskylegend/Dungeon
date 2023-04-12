@@ -55,7 +55,7 @@ public class Player {
             System.out.println("You drink a shield potion bringing your shield capacity to " + shieldMaxCapacity + ".\n");
         }
         else
-        shieldCapacity += shieldMaxCapacity/2;
+            shieldCapacity += shieldMaxCapacity/2;
     }
 
     // Method that will heal the player to their maximum health value. //
@@ -93,6 +93,3 @@ public class Player {
         System.out.println("You received " + obtainedExp + " experience.\n");
     }
 }
-
-
-

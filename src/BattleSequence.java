@@ -49,45 +49,46 @@ public class BattleSequence {
 
             else if (Input.equals("2")) {
                 player.shieldActive = false;
-                inventory.open(player);
+
+
 
                 // Condition that prevents the user from exceeding the maximum health value. //
                 if  (inventory.numHealthPotions > 0 && player.health < player.maxHealth && player.health + potion.healAmount >= player.maxHealth) {
                     player.healToMaxHealth(player);
                 }
-                 else if (player.health == player.maxHealth) {
+                else if (player.health == player.maxHealth) {
                     System.out.println("Your health is full. You cannot use any potions at this time.\n");
                 }
                 else if (inventory.numHealthPotions > 0 && player.health + potion.healAmount <= player.maxHealth) {
                     player.heal(potion);
                 }
-                 else if (inventory.numHealthPotions < 1) {
+                else if (inventory.numHealthPotions < 1) {
                     System.out.println("You have no more potions available, defeat enemies for a chance to receive more.\n");
                 }
             }
 
 
-             else if (Input.equals("3") && player.shieldCapacity > 0 && !player.openInventory) {
-                    player.shieldActive = true;
-                    System.out.println("---------------------------");
-                    System.out.println("You use your shield to block the attack");
-                    System.out.println("---------------------------");
-                }
-             else if (Input.equals("3") && player.shieldCapacity == 0) {
+            else if (Input.equals("3") && player.shieldCapacity > 0 && !player.openInventory) {
+                player.shieldActive = true;
+                System.out.println("---------------------------");
+                System.out.println("You use your shield to block the attack");
+                System.out.println("---------------------------");
+            }
+            else if (Input.equals("3") && player.shieldCapacity == 0) {
                 System.out.println("---------------------------");
                 System.out.println("Your shield is depleted. You need to wait for it to recharge before you can use it again.");
 
             }
-             else if (Input.equals("4")) {
+            else if (Input.equals("4")) {
                 player.shieldActive = false;
-                    System.out.println("---------------------------");
-                    System.out.println("You run away from the " + enemy.random + ".\n");
-                    enemy.randomize(); // Method that will allow the player to run away from the current enemy and encounter a new one. //
+                System.out.println("---------------------------");
+                System.out.println("You run away from the " + enemy.random + ".\n");
+                enemy.randomize(); // Method that will allow the player to run away from the current enemy and encounter a new one. //
             }
 
 
             else
-            System.out.println("Invalid Input!\n" + "Please make sure to type in 1, 2, or 3, or 4.\n");
+                System.out.println("Invalid Input!\n" + "Please make sure to type in 1, 2, or 3, or 4.\n");
 
             // Block of code that will track the amount of enemies the player has defeated and the experience the players has earned.
             // Designed in case I want to make bosses or other enemies spawn when certain thresholds are reached.
@@ -109,34 +110,35 @@ public class BattleSequence {
             }
 
             else
-                if (Input.equals("1") || Input.equals("2") && !player.openInventory || Input.equals("3")) {
-                    enemy.retaliation(player); // Method that allows the enemies that are alive to attack the player after each turn unless they run away. //
-                    if(!player.shieldActive) {
-                        System.out.println("---------------------------");
-                        System.out.println("The " + enemy.random + " strikes you for " + enemy.damage + " damage.\n");
-                        player.health -= enemy.damage;
-                        System.out.println("The " + enemy.random  + " has " + enemy.health + "/" + enemy.maxHealth + " health remaining.\n");
-                        System.out.println("---------------------------");
-                    }
-
+            if (Input.equals("1") || Input.equals("2") && !player.openInventory || Input.equals("3")) {
+                enemy.retaliation(player); // Method that allows the enemies that are alive to attack the player after each turn unless they run away. //
+                if(!player.shieldActive) {
+                    System.out.println("---------------------------");
+                    System.out.println("The " + enemy.random + " strikes you for " + enemy.damage + " damage.\n");
+                    player.health -= enemy.damage;
+                    System.out.println("The " + enemy.random  + " has " + enemy.health + "/" + enemy.maxHealth + " health remaining.\n");
+                    System.out.println("---------------------------");
                 }
 
-
-
-            }
-            if(player.health < 1) {
-                System.out.println("---------------------------");
-                System.out.println("You have run out of health and crawl out of the dungeon.\n");
-                System.out.println("GAME OVER.");
-                System.out.println("---------------------------");
-                return;
             }
 
-
-            }
 
 
         }
+        if(player.health < 1) {
+            System.out.println("---------------------------");
+            System.out.println("You have run out of health and crawl out of the dungeon.\n");
+            System.out.println("GAME OVER.");
+            System.out.println("---------------------------");
+            return;
+        }
+
+
+    }
+
+
+}
+
 
 
 
